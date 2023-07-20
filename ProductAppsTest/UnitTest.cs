@@ -27,7 +27,8 @@ namespace ProductAppsTest
 
             driver.Manage().Window.Maximize();
             // IWebElement ap = driver.FindElement(By.Id("learn"));
-            IWebElement FeedCreate = driver.FindElement(By.XPath("/html/body/div[2]/h2"));
+            IWebElement FeedCreate = driver.FindElement(By.XPath("/html/body/div/h2"));
+            ///html/body/div/h2
             string text = FeedCreate.Text;
             //String title = driver.Title;
             NUnit.Framework.Assert.AreEqual("Create", text);
@@ -39,28 +40,30 @@ namespace ProductAppsTest
         public void testCreate()
         {
             driver.Url = "http://localhost:44319/";
-            driver.Navigate().GoToUrl("https://localhost:44319/Product/Create");
+            driver.Navigate().GoToUrl("http://localhost:44319/Product/Create");
 
             driver.Manage().Window.Maximize();
             // IWebElement ap = driver.FindElement(By.Id("learn"));
-            IWebElement ProductNameTextbox = driver.FindElement(By.XPath("/html/body/div[2]/form/div/div[1]/div/input"));
+            ///html/body/div/form/div/div[1]
+            IWebElement ProductNameTextbox = driver.FindElement(By.XPath("/html/body/div/form/div/div[1]/div/input"));
 
             ProductNameTextbox.Click();
             ProductNameTextbox.SendKeys("Red Grapes");
             System.Threading.Thread.Sleep(2000);
-            IWebElement PriceTextbox = driver.FindElement(By.XPath("/html/body/div[2]/form/div/div[2]/div/input"));
+            ///html/body/div/form/div/div[2]
+            IWebElement PriceTextbox = driver.FindElement(By.XPath("/html/body/div/form/div/div[2]/div/input"));
             PriceTextbox.Click();
             PriceTextbox.SendKeys("6.0");
             System.Threading.Thread.Sleep(2000);
-            IWebElement DescriptionTextbox = driver.FindElement(By.XPath("/html/body/div[2]/form/div/div[3]/div/input"));
+            IWebElement DescriptionTextbox = driver.FindElement(By.XPath("/html/body/div/form/div/div[3]/div/input"));
             DescriptionTextbox.Click();
             DescriptionTextbox.SendKeys("sweet Red grapes");
             System.Threading.Thread.Sleep(2000);
 
-            IWebElement SubmitButton = driver.FindElement(By.XPath("/html/body/div[2]/form/div/div[4]/div/input"));
+            IWebElement SubmitButton = driver.FindElement(By.XPath("/html/body/div/form/div/div[4]/div/input"));
             SubmitButton.Click();
 
-            IWebElement IndexLabel = driver.FindElement(By.XPath("/html/body/div[2]/h2"));
+            IWebElement IndexLabel = driver.FindElement(By.XPath("/html/body/div/h2"));
             String labelText = IndexLabel.Text;
             System.Threading.Thread.Sleep(2000);
             NUnit.Framework.Assert.AreEqual("Index", labelText);
